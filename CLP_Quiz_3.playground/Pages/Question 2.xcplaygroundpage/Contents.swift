@@ -55,21 +55,6 @@ extension Nucleotide: CustomStringConvertible {
 
 func moveGsToEnd(genes: inout [Nucleotide]) {
     
-    var countG = 0
-    
-    for index in 0..<genes.count {
-        let nucleotide = genes[index]
-        switch nucleotide {
-        case .G:
-            countG += 1
-        default:
-            genes[index - countG] = nucleotide
-        }
-    }
-    
-    for index in (genes.count - countG)..<genes.count {
-        genes[index] = .G
-    }
 }
 
 //-------------------------------------------------------------------

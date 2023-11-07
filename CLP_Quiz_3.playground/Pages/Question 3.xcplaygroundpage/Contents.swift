@@ -65,55 +65,7 @@ extension Nucleotide: CustomStringConvertible {
 }
 
 func retrovirusLocations(genes: [Nucleotide], retrovirus: [Nucleotide]) -> [Int] {
-    
-    var result = [Int]()
-    var matrix = [[Int]](repeating: [Int](repeating: 0, count: retrovirus.count + 1), count: retrovirus.count + 2)
-    
-    var index = 0
-    
-    while index < genes.count {
-        for x in 0...(retrovirus.count + 1) {
-            for y in 0...retrovirus.count {
-                matrix[x][y] = 0
-                if x == 0 { matrix[x][y] = y }
-                if y == 0 { matrix[x][y] = x }
-            }
-        }
-        
-        var maxX = min(retrovirus.count + 1, genes.count - index)
-        
-        if retrovirus.count >= 1 {
-            for y in 1...retrovirus.count {
-                for x in 1...maxX {
-                    let substitutionCost: Int
-                    if genes[index + x - 1] == retrovirus[y - 1] {
-                        substitutionCost = 0
-                    } else {
-                        substitutionCost = 1
-                    }
-                    
-                    let choice1 = matrix[x - 1][y] + 1
-                    let choice2 = matrix[x][y - 1] + 1
-                    let choice3 = matrix[x - 1][y - 1] + substitutionCost
-                    
-                    matrix[x][y] = min(min(choice1, choice2), choice3)
-                }
-            }
-        }
-        
-        var minCount = Int.max
-        for x in 0...maxX {
-            minCount = min(minCount, matrix[x][retrovirus.count])
-        }
-        
-        if minCount <= 1 {
-            result.append(index)
-        }
-        
-        index += 1
-    }
-    
-    return result
+    []
 }
 
 //-------------------------------------------------------------------

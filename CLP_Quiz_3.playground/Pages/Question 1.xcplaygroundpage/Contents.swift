@@ -1,5 +1,8 @@
 import Foundation
 
+// NOTE: There are 4 pages in this playground.
+// There are a total of 4 questions, each on a separate page.
+
 // You are given an array of genes (nucleotides) defined by the "Nucleotide" enum below.
 
 // Write a function which determines the longest consecutive sequence of one nucleotide in the genes.
@@ -54,30 +57,7 @@ extension Nucleotide: CustomStringConvertible {
 }
 
 func longestConsecutiveSequence(genes: [Nucleotide]) -> [Nucleotide] {
-    
-    if genes.count <= 0 {
-        return [Nucleotide]()
-    }
-    
-    var resultGene = genes[0]
-    var resultCount = 1
-    var sequenceCount = 1
-    
-    var index = 1
-    while index < genes.count {
-        if genes[index] == genes[index - 1] {
-            sequenceCount += 1
-            if sequenceCount > resultCount {
-                resultCount = sequenceCount
-                resultGene = genes[index]
-            }
-        } else {
-            sequenceCount = 1
-        }
-        index += 1
-    }
-    
-    return [Nucleotide](repeating: resultGene, count: resultCount)
+    []
 }
 
 //-------------------------------------------------------------------
